@@ -5,7 +5,12 @@ const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*",   // Allow all origins (for dev) 
+  methods: ["GET", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 app.use("/schoolImages", express.static("schoolImages"));
 
